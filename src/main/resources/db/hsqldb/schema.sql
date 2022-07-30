@@ -6,6 +6,7 @@ DROP TABLE stockpile IF EXISTS;
 DROP TABLE product IF EXISTS;
 DROP TABLE payment IF EXISTS;
 
+--用户
 CREATE TABLE account
 (
     id        INTEGER IDENTITY PRIMARY KEY,
@@ -21,6 +22,7 @@ CREATE UNIQUE INDEX account_user ON account (username);
 CREATE UNIQUE INDEX account_telephone ON account (telephone);
 CREATE UNIQUE INDEX account_email ON account (email);
 
+--用户钱包
 CREATE TABLE wallet
 (
     id         INTEGER IDENTITY PRIMARY KEY,
@@ -30,6 +32,7 @@ CREATE TABLE wallet
 ALTER TABLE wallet
     ADD CONSTRAINT fk_wallet_account FOREIGN KEY (account_id) REFERENCES account (id) ON DELETE CASCADE;
 
+--商品
 CREATE TABLE product
 (
     id          INTEGER IDENTITY PRIMARY KEY,
@@ -42,6 +45,7 @@ CREATE TABLE product
 );
 CREATE INDEX product_title ON product (title);
 
+--商品库存
 CREATE TABLE stockpile
 (
     id         INTEGER IDENTITY PRIMARY KEY,
@@ -52,6 +56,7 @@ CREATE TABLE stockpile
 ALTER TABLE stockpile
     ADD CONSTRAINT fk_stockpile_product FOREIGN KEY (product_id) REFERENCES product (id) ON DELETE CASCADE;
 
+--商品规格
 CREATE TABLE specification
 (
     id         INTEGER IDENTITY PRIMARY KEY,
@@ -62,6 +67,7 @@ CREATE TABLE specification
 ALTER TABLE specification
     ADD CONSTRAINT fk_specification_product FOREIGN KEY (product_id) REFERENCES product (id) ON DELETE CASCADE;
 
+--广告（首页轮播）
 CREATE TABLE advertisement
 (
     id         INTEGER IDENTITY PRIMARY KEY,
@@ -71,6 +77,7 @@ CREATE TABLE advertisement
 ALTER TABLE advertisement
     ADD CONSTRAINT fk_advertisement_product FOREIGN KEY (product_id) REFERENCES product (id) ON DELETE CASCADE;
 
+--支付单
 CREATE TABLE payment
 (
     id           INTEGER IDENTITY PRIMARY KEY,
