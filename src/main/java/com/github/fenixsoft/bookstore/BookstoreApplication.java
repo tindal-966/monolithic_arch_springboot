@@ -24,7 +24,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 @SpringBootApplication
-@EnableCaching
+@EnableCaching // 开启缓存。更多参考：https://spring.io/guides/gs/caching/
 @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
 public class BookstoreApplication {
     public static void main(String[] args) {

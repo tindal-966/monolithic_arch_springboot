@@ -53,7 +53,7 @@ public class PaymentResource {
      */
     @PATCH
     @Path("/{payId}")
-    @RolesAllowed(Role.USER)
+    @RolesAllowed(Role.USER) // 授权
     public Response updatePaymentState(@PathParam("payId") String payId, @QueryParam("state") Payment.State state) {
         Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return updatePaymentStateAlias(payId, account.getId(), state);

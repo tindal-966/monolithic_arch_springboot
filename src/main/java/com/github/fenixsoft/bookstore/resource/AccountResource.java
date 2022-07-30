@@ -58,7 +58,7 @@ public class AccountResource {
      */
     @GET
     @Path("/{username}")
-    @Cacheable(key = "#username")
+    @Cacheable(key = "#username") // 允许缓存
     public Account getUser(@PathParam("username") String username) {
         return service.findAccountByUsername(username);
     }
@@ -67,7 +67,7 @@ public class AccountResource {
      * 创建新的用户
      */
     @POST
-    @CacheEvict(key = "#user.username")
+    @CacheEvict(key = "#user.username") // 删除缓存
     public Response createUser(@Valid @UniqueAccount Account user) {
         return CommonResponse.op(() -> service.createAccount(user));
     }

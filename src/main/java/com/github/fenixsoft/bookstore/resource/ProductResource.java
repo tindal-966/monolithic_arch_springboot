@@ -55,7 +55,7 @@ public class ProductResource {
      * 获取仓库中所有的货物信息
      */
     @GET
-    @Cacheable(key = "'ALL_PRODUCT'")
+    @Cacheable(key = "'ALL_PRODUCT'") // 自定义 Cache 名，后面更新信息时会删除该 key 的缓存，即意味着所有产品失效。缓存 list 类型的数据需要注意元素修改则必须整个 list 缓存失效
     public Iterable<Product> getAllProducts() {
         return service.getAllProducts();
     }
@@ -78,7 +78,7 @@ public class ProductResource {
             @CacheEvict(key = "#product.id"),
             @CacheEvict(key = "'ALL_PRODUCT'")
     })
-    @RolesAllowed(Role.ADMIN)
+    @RolesAllowed(Role.ADMIN) // 授权
     public Response updateProduct(@Valid Product product) {
         return CommonResponse.op(() -> service.saveProduct(product));
     }
