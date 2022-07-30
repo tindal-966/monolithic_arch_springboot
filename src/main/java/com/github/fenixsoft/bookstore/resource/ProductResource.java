@@ -42,11 +42,10 @@ import javax.ws.rs.core.Response;
  * @author icyfenix@gmail.com
  * @date 2020/3/6 20:52
  **/
-
-@Path("/products")
 @Component
-@CacheConfig(cacheNames = "resource.product")
+@Path("/products")
 @Produces(MediaType.APPLICATION_JSON)
+@CacheConfig(cacheNames = "resource.product")
 public class ProductResource {
 
     @Inject

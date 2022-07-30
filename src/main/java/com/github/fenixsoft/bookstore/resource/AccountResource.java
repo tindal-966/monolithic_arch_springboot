@@ -43,14 +43,14 @@ import javax.ws.rs.core.Response;
  * @author icyfenix@gmail.com
  * @date 2020/3/6 20:52
  **/
-@Path("/accounts")
 @Component
+@Path("/accounts")
+@Produces(MediaType.APPLICATION_JSON) // HTTP response body format
+@Consumes(MediaType.APPLICATION_JSON) // HTTP request body format
 @CacheConfig(cacheNames = "resource.account")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class AccountResource {
 
-    @Inject
+    @Inject // 类似 @Autowired, @Resource，JSR 标准不同，优先级也不同，@Resource 默认按名字，其他默认按类型。更多参考：https://www.baeldung.com/spring-annotations-resource-inject-autowire
     private AccountApplicationService service;
 
     /**

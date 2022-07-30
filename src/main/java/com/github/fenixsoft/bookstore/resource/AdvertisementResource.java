@@ -35,8 +35,8 @@ import javax.ws.rs.core.MediaType;
  * @author icyfenix@gmail.com
  * @date 2020/3/7 10:48
  **/
-@Path("/advertisements")
 @Component
+@Path("/advertisements")
 @Produces(MediaType.APPLICATION_JSON)
 public class AdvertisementResource {
 

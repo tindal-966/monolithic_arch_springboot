@@ -40,8 +40,8 @@ import javax.ws.rs.core.Response;
  * @author icyfenix@gmail.com
  * @date 2020/3/13 12:52
  **/
-@Path("/pay")
 @Component
+@Path("/pay")
 @Produces(MediaType.APPLICATION_JSON)
 public class PaymentResource {
 

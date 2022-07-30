@@ -40,8 +40,8 @@ import javax.ws.rs.core.MediaType;
  * @author icyfenix@gmail.com
  * @date 2020/3/12 11:23
  **/
-@Path("/settlements")
 @Component
+@Path("/settlements")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class SettlementResource {
