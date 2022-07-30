@@ -26,14 +26,14 @@ import javax.ws.rs.core.Response;
 import java.util.function.Consumer;
 
 /**
- * 为了简化编码而设计的HTTP Response对象包装类和工具集
+ * 为了简化编码而设计的 HTTP Response 对象包装类和工具集
  * <p>
- * 带有服务状态编码的（带有Code字段的）JavaBean领域对象包装类
- * Code字段的通常用于服务消费者判定该请求的业务处理是否成功。
+ * 带有服务状态编码的（带有 Code 字段的）JavaBean 领域对象包装类
+ * Code 字段的通常用于服务消费者判定该请求的业务处理是否成功。
  * <p>
  * 统一约定：
- * - 当服务调用正常完成，返回Code一律以0表示
- * - 当服务调用产生异常，可自定义不为0的Code值，此时Message字段作为返回客户端的详细信息
+ * - 当服务调用正常完成，返回 Code 一律以 0 表示
+ * - 当服务调用产生异常，可自定义不为 0 的 Code 值，此时 Message 字段作为返回客户端的详细信息
  *
  * @author icyfenix@gmail.com
  * @date 2020/3/6 15:46

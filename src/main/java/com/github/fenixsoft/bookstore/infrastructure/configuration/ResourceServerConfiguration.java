@@ -37,23 +37,23 @@ import javax.annotation.security.RolesAllowed;
  * 资源服务器配置
  * <p>
  * 配置资源服务访问权限，主流有两种方式：
- * 一是在这里通过{@link HttpSecurity}的<code>antMatchers</code>方法集中配置
- * 二是启用全局方法级安全支持{@link EnableGlobalMethodSecurity} 在各个资源的访问方法前，通过注解来逐个配置，使用的注解包括有：
- * JSR 250标准注解{@link RolesAllowed}，可完整替代Spring的{@link Secured}功能
- * 以及可以使用EL表达式的Spring注解{@link PreAuthorize}、{@link PostAuthorize}
+ * 一是在这里通过 {@link HttpSecurity} 的 <code>antMatchers</code> 方法集中配置
+ * 二是启用全局方法级安全支持 {@link EnableGlobalMethodSecurity} 在各个资源的访问方法前，通过注解来逐个配置，使用的注解包括有：
+ * JSR 250标准注解 {@link RolesAllowed}，可完整替代 Spring 的 {@link Secured} 功能
+ * 以及可以使用 EL 表达式的 Spring 注解 {@link PreAuthorize}、{@link PostAuthorize}
  *
  * @author icyfenix@gmail.com
  * @date 2020/3/7 19:43
  **/
 @Configuration
-@EnableResourceServer
+@EnableResourceServer // 启用资源服务器
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
     @Autowired
     private JWTAccessTokenService tokenService;
 
     /**
-     * 配置HTTP访问相关的安全选项
+     * 配置 HTTP 访问相关的安全选项
      */
     public void configure(HttpSecurity http) throws Exception {
         // 基于JWT来绑定用户状态，所以服务端可以是无状态的

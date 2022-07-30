@@ -32,18 +32,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * Spring Security的用户认证服务器配置
+ * Spring Security 的用户认证服务器配置
  * <p>
- * 借用Spring Security作为认证服务器，告知服务器通过怎样的途径去查询用户、加密密码和验证用户真伪
- * 我们实际上并不使用Spring Security提供的认证表单，而是选择了前端通过OAuth2的密码模式，在授权过程中同时完成认证
- * 由于服务端整套安全机制（方法授权判断、OAuth2密码模式的用户认证、密码的加密算法）仍然是构建在Spring Security基础之上
- * 所以我们的认证服务、用户信息服务仍然继承着Spring Security提供的基类，并在这里注册到Spring Security当中
+ * 借用 Spring Security 作为认证服务器，告知服务器通过怎样的途径去查询用户、加密密码和验证用户真伪
+ * 我们实际上并不使用 Spring Security 提供的认证表单，而是选择了前端通过 OAuth2 的密码模式，在授权过程中同时完成认证
+ * 由于服务端整套安全机制（方法授权判断、OAuth2 密码模式的用户认证、密码的加密算法）仍然是构建在 Spring Security 基础之上
+ * 所以我们的认证服务、用户信息服务仍然继承着 Spring Security 提供的基类，并在这里注册到 Spring Security 当中
  *
  * @author icyfenix@gmail.com
  * @date 2020/3/7 19:41
  **/
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // 启用 SpringSecurity
 public class AuthenticationServerConfiguration extends WebSecurityConfiguration {
 
     @Autowired

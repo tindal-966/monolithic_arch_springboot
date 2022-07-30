@@ -29,7 +29,7 @@ import javax.ws.rs.ext.Provider;
 import java.util.stream.Collectors;
 
 /**
- * 用于统一处理在Resource中由于验证器验证失败而带回客户端的错误信息
+ * 用于统一处理在 Resource （DDD 的 UserInterface 层）中由于验证器验证失败而带回客户端的错误信息
  *
  * @author icyfenix@gmail.com
  * @date 2020/3/10 23:37

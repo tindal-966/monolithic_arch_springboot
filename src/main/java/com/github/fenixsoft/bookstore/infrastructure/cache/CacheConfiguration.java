@@ -23,7 +23,7 @@ public class CacheConfiguration {
      * 系统默认缓存TTL时间：4分钟
      * 一些需要用到缓存的数据，譬如支付单，需要按此数据来规划过期时间
      */
-    public static final long SYSTEM_DEFAULT_EXPIRES = 4 * 60 * 1000;
+    public static final long SYSTEM_DEFAULT_EXPIRES = 4 * 60 * 1000; // 毫秒单位
 
     @Bean
     public CacheManager configCacheManager() {

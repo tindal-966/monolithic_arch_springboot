@@ -23,9 +23,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 /**
  * 带编码的实体容器
  * <p>
- * 一般来说REST服务应采用HTTP Status Code带回错误信息编码
- * 但很多前端开发都习惯以JSON-RPC的风格处理异常，所以仍然保留这个编码容器
- * 用于返回给客户端以形式为“{code,message,data}”的对象格式
+ * 一般来说REST服务应采用 HTTP Status Code 带回错误信息编码（实际上，使用微服务之后更应该如此，需要根据 StatusCode 按需重试）
+ * 但很多前端开发都习惯以 JSON-RPC 的风格处理异常，所以仍然保留这个编码容器
+ * 用于返回给客户端以形式为 “{code,message,data}” 的对象格式
  *
  * @author icyfenix@gmail.com
  * @date 2020/3/6 15:34

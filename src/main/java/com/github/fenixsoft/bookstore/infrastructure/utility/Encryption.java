@@ -26,7 +26,7 @@ import javax.inject.Named;
 import java.util.Optional;
 
 /**
- * 默认的加密工具
+ * 默认的加密工具（个人觉得还是不能将本类放在 utility 里面，毕竟这个 @Bean 是属于 SpringSecurity 的，虽然后面的 encode 方法看起来确实是 utility）
  *
  * @author icyfenix@gmail.com
  * @date 2020/3/10 18:02

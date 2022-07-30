@@ -16,12 +16,12 @@ import javax.ws.rs.ext.Provider;
  * @author icyfenix@gmail.com
  * @date 2020/4/7 0:09
  **/
-@Provider
+@Provider // todo 这个注解的具体作用？和 @Configuration 区别？
 public class AccessDeniedExceptionMapper implements ExceptionMapper<AccessDeniedException> {
 
     private static final Logger log = LoggerFactory.getLogger(AccessDeniedExceptionMapper.class);
 
-    @Context
+    @Context // todo 也是注入？
     private HttpServletRequest request;
 
     @Override

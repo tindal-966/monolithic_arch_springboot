@@ -31,24 +31,24 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * Jersey服务器配置
+ * Jersey 服务器配置
  * <p>
- * 使用Jersey来提供对JAX-RS（JSR 370：Java API for Restful Web Services）的支持
- * 这里设置了所有服务的前缀路径“restful”和restful服务资源的包路径
+ * 使用 Jersey 来提供对J AX-RS（JSR 370：Java API for Restful Web Services） 的支持
+ * 这里设置了所有服务的前缀路径 “restful” 和 restful 服务资源的包路径
  *
  * @author icyfenix@gmail.com
  * @date 2020/3/6 21:10
  **/
 @Configuration
-@ApplicationPath("/restful")
+@ApplicationPath("/restful") // RESTful 接口的路径
 public class JerseyConfiguration extends ResourceConfig {
     public JerseyConfiguration() {
         scanPackages("com.github.fenixsoft.bookstore.resource");
-        scanPackages("com.github.fenixsoft.bookstore.infrastructure.jaxrs");
+        scanPackages("com.github.fenixsoft.bookstore.infrastructure.jaxrs"); // todo 这里为什么要扫？
     }
 
     /**
-     * Jersey的packages()方法在Jar形式运行下有问题，这里修理一下
+     * Jersey 的 packages() 方法在 Jar 形式运行下有问题，这里修理一下
      */
     private void scanPackages(String scanPackage) {
         ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
