@@ -32,7 +32,7 @@ import javax.transaction.Transactional;
  * @author icyfenix@gmail.com
  * @date 2020/3/10 17:46
  **/
-@Named
+@Named // 类似 @Component
 @Transactional
 public class AccountApplicationService {
 
@@ -48,7 +48,7 @@ public class AccountApplicationService {
     }
 
     public Account findAccountByUsername(String username) {
-        return repository.findByUsername(username);
+        return repository.findByUsername(username); // todo 这里为什么可以调用只有接口没有实现的方法？
     }
 
     public void updateAccount(Account account) {

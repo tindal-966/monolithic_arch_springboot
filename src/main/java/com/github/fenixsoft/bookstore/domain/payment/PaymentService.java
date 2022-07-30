@@ -72,7 +72,7 @@ public class PaymentService {
         Payment payment = new Payment(total, DEFAULT_PRODUCT_FROZEN_EXPIRES);
         paymentRepository.save(payment);
         // 将支付单存入缓存
-        settlementCache.put(payment.getPayId(), bill);
+        settlementCache.put(payment.getPayId(), bill); // 设置缓存
         log.info("创建支付订单，总额：{}", payment.getTotalPrice());
         return payment;
     }
@@ -149,7 +149,7 @@ public class PaymentService {
      * 根据支付状态，实际调整库存（扣减库存或者解冻）
      */
     private void accomplishSettlement(Payment.State endState, String payId) {
-        Settlement settlement = (Settlement) Objects.requireNonNull(Objects.requireNonNull(settlementCache.get(payId)).get());
+        Settlement settlement = (Settlement) Objects.requireNonNull(Objects.requireNonNull(settlementCache.get(payId)).get()); // 获取缓存 todo 这里为什么保证可以从缓存里获得订单？
         settlement.getItems().forEach(i -> {
             if (endState == Payment.State.PAYED) {
                 stockpileService.decrease(i.getProductId(), i.getAmount());

@@ -36,7 +36,7 @@ import java.util.Map;
  **/
 public class Settlement {
 
-    @Size(min = 1, message = "结算单中缺少商品清单")
+    @Size(min = 1, message = "结算单中缺少商品清单") // 校验 todo 需要确定如果一个条件不满足是否就直接返回错误还是所有条件校验完再一起返回
     private Collection<Item> items;
 
     @NotNull(message = "结算单中缺少配送信息")

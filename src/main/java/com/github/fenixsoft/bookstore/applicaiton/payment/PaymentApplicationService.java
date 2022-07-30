@@ -47,7 +47,7 @@ public class PaymentApplicationService {
     @Inject
     private WalletService walletService;
 
-    @Resource(name = "settlement")
+    @Resource(name = "settlement") // 按名字注入
     private Cache settlementCache;
 
     /**
@@ -73,7 +73,7 @@ public class PaymentApplicationService {
         // 扣减货款
         walletService.decrease(accountId, price);
         // 支付成功的清除缓存
-        settlementCache.evict(payId);
+        settlementCache.evict(payId); // 手动清除缓存。PaymentService.producePayment 中设置了缓存；PaymentService.accomplishSettlement 中使用了缓存。
     }
 
     /**
