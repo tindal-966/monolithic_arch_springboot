@@ -34,15 +34,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * JWT访问令牌
+ * JWT 访问令牌
  * <p>
  * JWT令牌的结构为三部分组成：[令牌头（Header）].[负载信息（Payload）].[签名（Signature）]
- * 令牌头：定义了令牌的元数据，如令牌采用的签名算法，默认为HMAC SHA256算法
+ * 令牌头：定义了令牌的元数据，如令牌采用的签名算法，默认为 HMAC SHA256 算法
  * 负载信息：由签发者自定义的数据，一般会包括过期时间（Expire）、授权范围（Authority）、令牌ID编号（JTI）等
  * 签名：签名是使用私钥和头部指定的算法，前两部分进行的数字签名，防止数据被篡改。
- * 以上，令牌头和负载均为JSON结构，进行Base64URLEncode之后进行签名，然后用“.”连接，构成令牌报文
+ * 以上，令牌头和负载均为 JSON 结构，进行 Base64URLEncode 之后进行签名，然后用“.”连接，构成令牌报文
  * <p>
- * Spring Security OAuth2的{@link JwtAccessTokenConverter}提供了令牌的基础结构（令牌头、部分负载，如过期时间、JTI）的转换实现
+ * Spring Security OAuth2 的 {@link JwtAccessTokenConverter} 提供了令牌的基础结构（令牌头、部分负载，如过期时间、JTI）的转换实现
  * 继承此类，在加入自己定义的负载信息即可使用。一般来说负载中至少要告知服务端当前用户是谁，但又不应存放过多信息导致HTTP Header过大，尤其不应存放敏感信息。
  *
  * @author icyfenix@gmail.com
@@ -77,8 +77,8 @@ public class JWTAccessToken extends JwtAccessTokenConverter {
         Authentication user = authentication.getUserAuthentication();
         String[] authorities = user.getAuthorities().stream().map(GrantedAuthority::getAuthority).toArray(String[]::new);
         Map<String, Object> payLoad = new HashMap<>();
-        // Spring Security OAuth的JWT令牌默认实现中就加入了一个“user_name”的项存储了当前用户名
-        // 这里主要是出于演示Payload的用途，以及方便客户端获取（否则客户端要从令牌中解码Base64来获取），设置了一个“username”，两者的内容是一致的
+        // Spring Security OAuth 的 JWT 令牌默认实现中就加入了一个“user_name”的项存储了当前用户名
+        // 这里主要是出于演示 Payload 的用途，以及方便客户端获取（否则客户端要从令牌中解码 Base64 来获取），设置了一个“username”，两者的内容是一致的
         payLoad.put("username", user.getName());
         payLoad.put("authorities", authorities);
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(payLoad);

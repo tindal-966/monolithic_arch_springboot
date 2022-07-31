@@ -30,8 +30,8 @@ import java.util.HashSet;
 /**
  * 认证用户模型
  * <p>
- * 用户注册之后，包含其业务属性，如姓名、电话、地址，用于业务发生，存储于Account对象中
- * 也包含其用于认证的属性，譬如密码、角色、是否停用，存储于AuthenticAccount对象中
+ * 用户注册之后，包含其业务属性，如姓名、电话、地址，用于业务发生，存储于 Account 对象中
+ * 也包含其用于认证的属性，譬如密码、角色、是否停用，存储于 AuthenticAccount 对象中
  *
  * @author icyfenix@gmail.com
  * @date 2020/3/7 20:46
@@ -40,7 +40,7 @@ public class AuthenticAccount extends Account implements UserDetails {
 
     public AuthenticAccount() {
         super();
-        authorities.add(new SimpleGrantedAuthority(Role.USER));
+        authorities.add(new SimpleGrantedAuthority(Role.USER)); // 默认带有 USER 角色
     }
 
     public AuthenticAccount(Account origin) {
@@ -66,12 +66,13 @@ public class AuthenticAccount extends Account implements UserDetails {
         this.authorities = authorities;
     }
 
+    // --- 以下均是没有启用的个功能，所以默认都是返回 true ---
     /**
      * 账号是否过期
      */
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return true; // 简化
     }
 
     /**
@@ -79,7 +80,7 @@ public class AuthenticAccount extends Account implements UserDetails {
      */
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return true; // 简化
     }
 
     /**
@@ -87,7 +88,7 @@ public class AuthenticAccount extends Account implements UserDetails {
      */
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return true; // 简化
     }
 
     /**
@@ -95,6 +96,6 @@ public class AuthenticAccount extends Account implements UserDetails {
      */
     @Override
     public boolean isEnabled() {
-        return true;
+        return true; // 简化
     }
 }

@@ -39,9 +39,9 @@ public class Stockpile extends BaseEntity {
 
     private Integer frozen;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private transient Product product;
+    @OneToOne(fetch = FetchType.LAZY) // 一对一关系
+    @JoinColumn(name = "product_id") // 外键
+    private transient Product product; // todo transient????
 
     public Integer getAmount() {
         return amount;

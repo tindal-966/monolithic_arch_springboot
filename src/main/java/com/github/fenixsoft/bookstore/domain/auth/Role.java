@@ -24,7 +24,7 @@ package com.github.fenixsoft.bookstore.domain.auth;
  * @author icyfenix@gmail.com
  * @date 2020/3/16 11:32
  **/
-public interface Role {
+public interface Role { // todo 为什么不使用 Enum？
     String USER = "ROLE_USER";
     String ADMIN = "ROLE_ADMIN";
 }

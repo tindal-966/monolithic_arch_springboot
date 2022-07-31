@@ -30,6 +30,6 @@ import java.util.Optional;
  **/
 public interface WalletRepository extends CrudRepository<Wallet, Integer> {
 
-    Optional<Wallet> findByAccountId(Integer accountId);
+    Optional<Wallet> findByAccountId(Integer accountId); // todo 难道是声明式的？符合规则就能自动转换？
 
 }

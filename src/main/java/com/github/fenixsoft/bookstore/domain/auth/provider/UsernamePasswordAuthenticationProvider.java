@@ -33,7 +33,7 @@ import javax.inject.Named;
 
 /**
  * 基于用户名、密码的身份认证器
- * 该身份认证器会被{@link AuthenticationManager}验证管理器调用
+ * 该身份认证器会被 {@link AuthenticationManager} 验证管理器调用
  * 验证管理器支持多种验证方式，这里基于用户名、密码的的身份认证是方式之一
  *
  * @author icyfenix@gmail.com
@@ -52,15 +52,15 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
      * 认证处理
      * <p>
      * 根据用户名查询用户资料，对比资料中加密后的密码
-     * 结果将返回一个Authentication的实现类（此处为UsernamePasswordAuthenticationToken）则代表认证成功
-     * 返回null或者抛出AuthenticationException的子类异常则代表认证失败
+     * 结果将返回一个 Authentication 的实现类（此处为 UsernamePasswordAuthenticationToken ）则代表认证成功
+     * 返回 null 或者抛出 AuthenticationException 的子类异常则代表认证失败
      */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName().toLowerCase();
         String password = (String) authentication.getCredentials();
-        // AuthenticationException的子类定义了多种认证失败的类型，这里仅处“理用户不存在”、“密码不正确”两种
-        // 用户不存在的话会直接由loadUserByUsername()抛出异常
+        // AuthenticationException 的子类定义了多种认证失败的类型，这里仅 “处理用户不存在”、“密码不正确” 两种
+        // 用户不存在的话会直接由 loadUserByUsername() 抛出异常
         UserDetails user = authenticAccountDetailsService.loadUserByUsername(username);
         if (!passwordEncoder.matches(password, user.getPassword())) throw new BadCredentialsException("密码不正确");
         // 认证通过，返回令牌

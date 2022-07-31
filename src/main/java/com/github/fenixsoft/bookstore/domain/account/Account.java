@@ -42,8 +42,8 @@ public class Account extends BaseEntity {
     // 密码字段不参与序列化（但反序列化是参与的）、不参与更新（但插入是参与的）
     // 这意味着密码字段不会在获取对象（很多操作都会关联用户对象）的时候泄漏出去；
     // 也意味着此时“修改密码”一类的功能无法以用户对象资源的接口来处理（因为更新对象时密码不会被更新），需要单独提供接口去完成
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Column(updatable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // 不参与序列化（即：obj -> json），参与反序列化（即：json -> obj）
+    @Column(updatable = false) // 不允许更新（save 接口即使带有该值也不会改变数据库里的值）
     private String password;
 
     @NotEmpty(message = "用户姓名不允许为空")
