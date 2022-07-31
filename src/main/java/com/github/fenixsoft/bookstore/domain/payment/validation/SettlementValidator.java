@@ -37,7 +37,7 @@ import javax.validation.ConstraintValidatorContext;
  * @author icyfenix@gmail.com
  * @date 2020/3/16 9:02
  **/
-public class SettlementValidator implements ConstraintValidator<SufficientStock, Settlement> {
+public class SettlementValidator implements ConstraintValidator<SufficientStock, Settlement> { // todo 为什么这里不用像 AccountValidation 那样设置判断 repository 的状态？？
 
     @Inject
     private StockpileService service;
