@@ -97,7 +97,7 @@ public class ProductResource {
     }
 
     /**
-     * 创建新的产品
+     * 删除新的产品
      */
     @DELETE
     @Path("/{id}")
